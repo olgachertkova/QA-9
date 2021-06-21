@@ -42,6 +42,7 @@ public class OscarShopTests extends TestBase{
         WebElement loginButton = driver.findElement(By.xpath("//button[contains(text(),'Log In')]"));
         loginButton.click();
         Thread.sleep(5000);
+        loginButton.isDisplayed();
 
     }
 
