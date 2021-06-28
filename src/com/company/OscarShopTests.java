@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import java.sql.Time;
 
 public class OscarShopTests extends TestBase{
-    String email = "qwe" + System.currentTimeMillis() + "@gmail.com";
+    String email = "qwe123" + "@gmail.com";
     String password = "Qwe123123";
 
     @Test(priority = 1)
@@ -41,8 +41,7 @@ public class OscarShopTests extends TestBase{
         loginPasswordField.sendKeys(password);
         WebElement loginButton = driver.findElement(By.xpath("//button[contains(text(),'Log In')]"));
         loginButton.click();
-        Thread.sleep(5000);
-        loginButton.isDisplayed();
+        driver.findElement(By.cssSelector(".alertinner.wicon .icon-ok-sign")).isDisplayed();
 
     }
 

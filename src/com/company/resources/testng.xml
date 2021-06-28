@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<!--Usage:
+Possible environments:
+"local" - for Local,
+"hcsc" - for HCSC,
+"cn" - for Centene,
+"vh" - for VirtualHealth,
+"ivhp" - for IVHP,
+"demo" - for DEMO,
+"uhc" - for UHC,
+"upmc" - for UPMC,
+"icp" - for ICP,
+"ccmp" - for ССМР,
+"ccnc" - for CCNC,
+"ps" - for PacificSource
+
+Running SMOKE tests in any environment:
+mvn clean test -Denv=<envName> -Dgroups=smoke
+Example
+mvn clean test -Denv=ccmp -Dgroups=smoke
+
+Running ALL tests in any environment:
+mvn clean test -Denv=<envName> -Dgroups=<envName>
+Example
+mvn clean test -Denv=ccmp -Dgroups=ccmp
+
+Running all tests in any class:
+mvn clean test -Denv=<envName> -Dgroups=<envName> -Dtest=<className>
+Example
+mvn clean test -Denv=ccnc -Dgroups=ccnc -Dtest=admin.home.HomeTests.java
+
+Running all tests for any role:
+mvn clean test -Denv=<envName> -Dgroups=<envName> -Dtest=<roleName>.**
+Example
+mvn clean test -Denv=ccnc -Dgroups=ccnc -Dtest=admin.**
+
+Running PROD tests in any environment:
+mvn clean test -Denv=<envName> -Dgroups=prod
+Example
+mvn clean test -Denv=ccmp -Dgroups=prod
+  -->
+
+<suite name="tests" verbose="5"  thread-count="1" parallel="classes" preserve-order="true">
+  <test name="Preconditions API Test">
+    <packages>
+      <package name="precondition.*"></package>
+    </packages>
+  </test>
+  <test name="UI-Test">
+
+    <packages>
+      <package name="ui.*" ></package>
+    </packages>
+  </test>
+</suite>
