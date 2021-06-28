@@ -28,7 +28,8 @@ public class OscarProductTests extends TestBase{
     public void countProductInBasketTest(){
         selectBooksCategory();
         addToBasketFirstBook();
-        selectBooksCategorySecondTime();
+//        selectBooksCategorySecondTime();
+        driver.navigate().refresh();
         addToBasketFirstBook();
         clickOnViewBasketButton();
         WebDriverWait wait = new WebDriverWait(driver, 20);
