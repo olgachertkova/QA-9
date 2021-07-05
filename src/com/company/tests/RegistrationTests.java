@@ -1,17 +1,10 @@
-package com.company;
+package com.company.tests;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.sql.Time;
-
-public class OscarShopTests extends TestBase{
+public class RegistrationTests extends TestBase{
     String email = "qwe123" + "@gmail.com";
     String password = "Qwe123123";
 
