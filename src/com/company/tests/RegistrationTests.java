@@ -33,6 +33,7 @@ public class RegistrationTests extends TestBase{
         registrationPageHelper.clickOnRegisterButton();
         Assert.assertTrue(mainPageHelper.successMessageIsDisplayed(), "No message!!");
         Assert.assertTrue(mainPageHelper.successMessageContainsText(message));
+        
     }
 
     @Test(priority = 2, dependsOnMethods = "registrationTest")
