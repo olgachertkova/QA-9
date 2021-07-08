@@ -35,4 +35,17 @@ public class MainPageHelper extends PageBase{
     public void selectBooksCategory() {
         driver.findElement(By.className("dropdown-submenu")).click();
     }
+
+    public void clickOnLoginOrRegisterLink() {
+        WebElement loginLink = driver.findElement(By.id("login_link"));
+        loginLink.click();
+    }
+
+    public boolean successMessageIsDisplayed() {
+        return driver.findElement(By.className("alertinner")).isDisplayed();
+    }
+
+    public boolean successMessageContainsText(String message) {
+        return driver.findElement(By.className("alertinner")).getText().contains(message);
+    }
 }

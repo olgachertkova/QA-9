@@ -1,31 +1,42 @@
 package com.company.tests;
 
+import com.company.pages.MainPageHelper;
+import com.company.pages.RegistrationPageHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.company.pages.PageBase.generateRandomEmail;
+
 public class RegistrationTests extends TestBase{
-    String email = "qwe123" + "@gmail.com";
+    String email = generateRandomEmail(5);
     String password = "Qwe123123";
+    RegistrationPageHelper registrationPageHelper;
+    MainPageHelper mainPageHelper;
+    String message = "Thanks for registering!";
+
+    @BeforeMethod
+    public void initPage(){
+        registrationPageHelper = new RegistrationPageHelper(driver);
+        mainPageHelper = new MainPageHelper(driver);
+    }
 
     @Test(priority = 1)
     public void registrationTest() {
-        WebElement loginLink = driver.findElement(By.id("login_link"));
-        loginLink.click();
-        WebElement emailField = driver.findElement(By.id("id_registration-email"));
-        emailField.clear();
-        emailField.sendKeys(email);
-        WebElement passwordField = driver.findElement(By.id("id_registration-password1"));
-        passwordField.sendKeys(password);
-        WebElement confirmPasswordField = driver.findElement(By.id("id_registration-password2"));
-        confirmPasswordField.sendKeys(password);
-        WebElement registerButton = driver.findElement(By.name("registration_submit"));
-        registerButton.click();
-
+        mainPageHelper.clickOnLoginOrRegisterLink();
+        registrationPageHelper.waitUntilPageIsLoaded();
+        registrationPageHelper.fillEmailField(email);
+        registrationPageHelper.fillPasswordField(password);
+        registrationPageHelper.fillConfirmPasswordField(password);
+        registrationPageHelper.clickOnRegisterButton();
+        Assert.assertTrue(mainPageHelper.successMessageIsDisplayed(), "No message!!");
+        Assert.assertTrue(mainPageHelper.successMessageContainsText(message));
     }
 
     @Test(priority = 2, dependsOnMethods = "registrationTest")
-    public void loginTest() throws InterruptedException {
+    public void loginTest() {
         WebElement loginLink = driver.findElement(By.id("login_link"));
         loginLink.click();
         WebElement loginEmailField = driver.findElement(By.xpath("//input[@id='id_login-username']"));

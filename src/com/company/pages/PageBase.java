@@ -87,7 +87,7 @@ public abstract class PageBase {
             word[i] = (char)('a' + random.nextInt(26));
             randomStrings = randomStrings + word[i];
         }
-        String randomEmail = randomStrings + "@.com";
+        String randomEmail = randomStrings + "@gmail.com";
         return randomEmail;
     }
 
