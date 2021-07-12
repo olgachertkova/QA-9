@@ -3,12 +3,16 @@ package com.company.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 public class MainPageHelper extends PageBase{
-    WebElement basketButton = driver.findElement(By.className("btn-group"));
-    WebElement submitLangButton = driver.findElement(By.cssSelector("button.btn.btn-default[type=\"submit\"]"));
-    WebElement langButton = driver.findElement(By.name("language"));
+    @FindBy(className = "btn-group") 
+    WebElement basketButton;
+    @FindBy (css = "button.btn.btn-default[type=\"submit\"]")
+    WebElement submitLangButton ;
+    @FindBy (name = "language")
+    WebElement langButton;
 
     public MainPageHelper(WebDriver driver) {
         super(driver);

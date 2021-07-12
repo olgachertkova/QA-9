@@ -4,6 +4,7 @@ import com.company.pages.MainPageHelper;
 import com.company.pages.RegistrationPageHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -19,8 +20,8 @@ public class RegistrationTests extends TestBase{
 
     @BeforeMethod
     public void initPage(){
-        registrationPageHelper = new RegistrationPageHelper(driver);
-        mainPageHelper = new MainPageHelper(driver);
+        registrationPageHelper = PageFactory.initElements(driver, RegistrationPageHelper.class);
+        mainPageHelper = PageFactory.initElements(driver, MainPageHelper.class);
     }
 
     @Test(priority = 1)
@@ -33,7 +34,7 @@ public class RegistrationTests extends TestBase{
         registrationPageHelper.clickOnRegisterButton();
         Assert.assertTrue(mainPageHelper.successMessageIsDisplayed(), "No message!!");
         Assert.assertTrue(mainPageHelper.successMessageContainsText(message));
-        
+
     }
 
     @Test(priority = 2, dependsOnMethods = "registrationTest")
